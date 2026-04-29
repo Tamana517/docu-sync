@@ -7,7 +7,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb+srv://admin:123456654321@cluster0.bfntqrz.mongodb.net/doc-editor");
+require("dotenv").config();
+
+mongoose.connect(process.env.MONGO_URI);
 
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/docs", require("./routes/docRoutes"));
